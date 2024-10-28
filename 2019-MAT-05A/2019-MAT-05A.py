@@ -16,7 +16,7 @@ def wypisz_zycie_trolla(zycie_trolla: int) -> None:
 def pobierz_akcje(mana_zygfryda: int, tura_3: int) -> int: 
     mozliwe_akcje()
     while True: 
-        akcja_uzytkownika = int(input("Wybierz akcję: "))
+        akcja_uzytkownika: int = int(input("Wybierz akcję: "))
         if akcja_uzytkownika < 1 or akcja_uzytkownika > 5:
             print("Numer akcji musi być pomiędzy 1 a 5")
         elif akcja_uzytkownika == 2 and mana_zygfryda < 20:
@@ -27,7 +27,6 @@ def pobierz_akcje(mana_zygfryda: int, tura_3: int) -> int:
             akcja_uzytkownika = -1
         else:
             break
-        
     if akcja_uzytkownika == 1: 
         return 1
     elif akcja_uzytkownika == 2: 
@@ -60,10 +59,9 @@ def main() -> None:
     zycie_trolla: int = 1000
     mana_zygfryda: int = 100
     tura_3: int = 0
-
     while zycie_trolla > 0: 
         wypisz_zycie_trolla(zycie_trolla)
-        akcja_uzytkownika = pobierz_akcje(mana_zygfryda, tura_3)
+        akcja_uzytkownika: int = pobierz_akcje(mana_zygfryda, tura_3)
         if akcja_uzytkownika == 1: 
             liczba: float = random.random()
             if liczba <= 0.3: 
