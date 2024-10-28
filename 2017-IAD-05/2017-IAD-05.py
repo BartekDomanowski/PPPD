@@ -32,7 +32,7 @@ def F(a: float, b: float) -> float:
 
 def main() -> None: 
     #odczyt danych z pliku
-    with open("ZadaniaPunktowane/2017-IAD-05/input.txt", "r") as file:
+    with open("input.txt", "r") as file:
         a1: float = float(file.readline().strip())
         an: float = float(file.readline().strip())
         n: int = int(file.readline().strip())
@@ -48,7 +48,7 @@ def main() -> None:
     max_a: int
     max_b: int
     max_a, max_b = -1, -1 
-    out_file = open("ZadaniaPunktowane/2017-IAD-05/output.txt", "w")
+    out_file = open("output.txt", "w")
     print("a \ b | ",end="",file = out_file)
     for i in range(n + 2):
         if i == 0:
@@ -93,7 +93,7 @@ def main() -> None:
             ))
     # ax.add_patch(patches.Rectangle(....)) można będziemy wywoływać wielokrotnie
     # zapis do PNG po zakończeniu rysowania
-    fig.savefig('ZadaniaPunktowane/2017-IAD-05/output.png', dpi=90)
+    fig.savefig('output.png', dpi=90)
 
 
 if __name__ == "__main__": 

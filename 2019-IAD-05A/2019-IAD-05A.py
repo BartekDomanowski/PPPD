@@ -39,13 +39,17 @@ def najmniejszy_plot(x_min: int, x_max: int, y_min: int, y_max: int) -> tuple[in
     najwiekszy_x: int
     najmniejszy_x, najmniejszy_y = float("inf"), float("inf") 
     najwiekszy_x, najwiekszy_y = -float("inf"), -float("inf")
-    for i in range(x_max, x_min - 1, -1):
-        for j in range(y_min, y_max + 1): 
+    cnt = 0 
+    for i in range(y_max, y_min - 1, -1): 
+        for j in range(x_min, x_max + 1):
             if drzewo(i, j): 
+                cnt += 1
                 najmniejszy_x = min(i, najmniejszy_x)   
                 najmniejszy_y = min(j, najmniejszy_y)
                 najwiekszy_x = max(i, najwiekszy_x)
                 najwiekszy_y = max(j, najwiekszy_y)
+    if cnt == 0:
+        return 0, 0, 0, 0
     return najmniejszy_x, najwiekszy_x, najmniejszy_y, najwiekszy_y
 
 
@@ -55,18 +59,18 @@ def obwod_prostokata(x_min: int, x_max: int, y_min: int, y_max: int) -> int:
 
 def zapisz_do_pliku(sciezka: str, x_min: int, x_max: int, y_min: int, y_max: int) -> None:
     with open(sciezka, "w") as out_file: 
-        for i in range(x_max, x_min - 1, -1):
-            print(f"{i:<5}", end = "", file = out_file) 
-            for j in range(y_min, y_max + 1): 
+        for i in range(y_max, y_min - 1, -1):
+            print(f"{i:<5}", end = "", file = out_file)  
+            for j in range(x_min, x_max + 1):
                 if drzewo(i, j): 
                     print("D", end = "", file = out_file)
                 else: 
                     print(".", end = "", file = out_file)
             print(file = out_file)
-            if i == 0: 
+            if i == y_min: 
                 print(f"y/x  ", end = "", file = out_file)
-                for j in range(y_min, y_max + 1): 
-                    print(j, end = "", file = out_file)
+                for x in range(x_min, x_max + 1): 
+                    print(x, end = "", file = out_file)
 
 
 def najlepszy_podzial(x_min: int, x_max: int, y_min: int, y_max: int) -> int:
@@ -108,7 +112,7 @@ def main() -> None:
     najwiekszy_x: int
     najwiekszy_x: int
     najmniejszy_x, najwiekszy_x, najmniejszy_y, najwiekszy_y = najmniejszy_plot(x_min, x_max, y_min, y_max)
-    zapisz_do_pliku("ZadaniaPunktowane/2019-IAD-05A/output.txt", najmniejszy_x, najwiekszy_x, najmniejszy_y, najwiekszy_y)
+    zapisz_do_pliku("output.txt", x_min, x_max, y_min, y_max)
     print(f"Obwód sadu: {obwod_prostokata(x_min, x_max, y_min, y_max)}")
     print(f"Obwód płotu: {obwod_prostokata(najmniejszy_x, najwiekszy_x, najmniejszy_y, najwiekszy_y)}")
     print(f"Najlepszy podział to: {najlepszy_podzial(x_min, x_max, y_min, y_max)}")
