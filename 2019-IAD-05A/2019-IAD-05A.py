@@ -76,22 +76,25 @@ def zapisz_do_pliku(sciezka: str, x_min: int, x_max: int, y_min: int, y_max: int
 def najlepszy_podzial(x_min: int, x_max: int, y_min: int, y_max: int) -> int:
     najmniejszy_obwod: float = float("inf")
     dla_jakiego_x_obwod: int = -1
+    curr_x_min1: int
+    curr_x_max1: int
+    curr_y_min1: int
+    curr_y_max1: int
+    curr_x_min2: int
+    curr_x_max2: int
+    curr_y_min2: int
+    curr_y_max2: int
+    obwod_laczny: int
+    obwod_1: int
+    obwod_2: int
     for i in range(x_min, x_max + 1):
-        curr_x_min1: int
-        curr_x_max1: int
-        curr_y_min1: int
-        curr_y_max1: int
         curr_x_min1, curr_x_max1, curr_y_min1, curr_y_max1 = najmniejszy_plot(x_min, i, y_min, y_max)
-        obwod_1: int = obwod_prostokata(curr_x_min1, curr_x_max1, curr_y_min1, curr_y_max1)
-        obwod_2: int = 0 
+        obwod_1 = obwod_prostokata(curr_x_min1, curr_x_max1, curr_y_min1, curr_y_max1)
+        obwod_2 = 0 
         if i + 1 <= x_max:
-            curr_x_min2: int
-            curr_x_max2: int
-            curr_y_min2: int
-            curr_y_max2: int
             curr_x_min2, curr_x_max2, curr_y_min2, curr_y_max2 = najmniejszy_plot(i + 1, x_max, y_min, y_max)
             obwod_2 = obwod_prostokata(curr_x_min2, curr_x_max2, curr_y_min2, curr_y_max2)
-        obwod_laczny: int = obwod_1 + obwod_2
+        obwod_laczny = obwod_1 + obwod_2
         if obwod_laczny < najmniejszy_obwod: 
             najmniejszy_obwod = obwod_laczny
             dla_jakiego_x_obwod = i

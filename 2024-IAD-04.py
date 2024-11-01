@@ -65,9 +65,11 @@ def main() -> None:
     imie: str = input("Witaj graczu! Podaj swoje imię (nazwa użytkownika): ")
     ile_po_kolei: int = 0
     jakie_ostatnie_zadanie: int = -1 
+    wybor_uzytkownika: int
+    wynik_uzytkownika: float
     while punkty_gracza > 0 and punkty_gracza < 200:
         wyswietl_menu()
-        wybor_uzytkownika: int = int(input("Proszę wybrać rodzaj zadania: "))
+        wybor_uzytkownika = int(input("Proszę wybrać rodzaj zadania: "))
         if not(wybor_uzytkownika == 1 or wybor_uzytkownika == 2 or wybor_uzytkownika == 3 or wybor_uzytkownika == 4): 
             raise ValueError("Błędne dane")
 

@@ -15,8 +15,9 @@ def wypisz_zycie(hp_fryderyka: int) -> None:
 
 
 def pobierz_akcje(ile_3_z_kolei: int, hp_goblina: int) -> int:
+    numer_akcji: int
     while True:
-        numer_akcji: int = int(input("Wybierz akcje: "))
+        numer_akcji = int(input("Wybierz akcje: "))
         if numer_akcji < 1 or numer_akcji > 5: 
             print("Numer akcji powinien byc z przedzialu 1 - 5")
         elif numer_akcji == 3 and ile_3_z_kolei > 0:
@@ -47,13 +48,17 @@ def main() -> None:
     hp_fryderyka: int = 500 
     ile_3_z_kolei: int = 0
     zloto_fryderyka: int = 0
+    sila_losowego_straznika: int
+    ilosc_zlota_straznika: int
+    numer_akcji: int
+    szansa_ze_straznik_dogoni: int
     while hp_fryderyka > 0: 
         print()
         wypisz_zycie(hp_fryderyka)
-        sila_losowego_straznika: int = random.randint(0, 200)
-        ilosc_zlota_straznika: int = random.randint(0, 200)
+        sila_losowego_straznika = random.randint(0, 200)
+        ilosc_zlota_straznika = random.randint(0, 200)
         print(f"Goblin o sile {sila_losowego_straznika} broni {ilosc_zlota_straznika} sztuk zlota")
-        numer_akcji: int = pobierz_akcje(ile_3_z_kolei, sila_losowego_straznika)
+        numer_akcji = pobierz_akcje(ile_3_z_kolei, sila_losowego_straznika)
         if numer_akcji == 1: 
             obrazenia_straznika = random.randint(0, sila_losowego_straznika)
             hp_fryderyka -= obrazenia_straznika 
@@ -63,7 +68,7 @@ def main() -> None:
                 ile_3_z_kolei += 1
                 ile_3_z_kolei %= 4
         elif numer_akcji == 2: 
-            szansa_ze_straznik_dogoni: int = random.randint(1,10)
+            szansa_ze_straznik_dogoni = random.randint(1,10)
             if szansa_ze_straznik_dogoni <= 2: 
                 obrazenia_straznika = random.randint(0, 2 * sila_losowego_straznika)
                 hp_fryderyka -= sila_losowego_straznika

@@ -24,21 +24,24 @@ def czy_lustrzane(a: int, b: int) -> bool:
 
 
 def main() -> None: 
+    wybor_uzytkownika: int
+    liczba_1: int
+    liczba_2: int
     while True: 
         menu()
-        wybor_uzytkownika: int = int(input())
+        wybor_uzytkownika = int(input())
         while not(wybor_uzytkownika == 0 or wybor_uzytkownika == 1):
             print("Błędny wybór. Spróbuj jeszcze raz.")
             menu()
-            wybor_uzytkownika: int = int(input())
+            wybor_uzytkownika = int(input())
         if wybor_uzytkownika == 1:
             break
         
-        liczba_1: int = int(input("Podaj pierwszą liczbę\n"))
+        liczba_1 = int(input("Podaj pierwszą liczbę\n"))
         if liczba_1 < 1 or liczba_1 >= 10**10:
             raise ValueError("Liczby muszą być dodatnie i mniejsze od 10ˆ10")
         
-        liczba_2: int = int(input("Podaj drugą liczbę\n"))
+        liczba_2 = int(input("Podaj drugą liczbę\n"))
         if liczba_2 < 1 or liczba_2 >= 10**10:
             raise ValueError("Liczby muszą być dodatnie i mniejsze od 10ˆ10")
         

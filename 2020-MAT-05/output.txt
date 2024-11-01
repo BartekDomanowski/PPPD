@@ -1,0 +1,10 @@
+Liczba wygrywająca: 44
+Gracz 1 liczba kości: 3 wyrzucone: 1 2 2  bonus: 0 suma: 5
+Gracz 2 liczba kości: 3 wyrzucone: 2 3 2  bonus: 0 suma: 7
+Gracz 1 liczba kości: 2 wyrzucone: 4 5  bonus: 1 suma: 15
+Gracz 2 liczba kości: 2 wyrzucone: 4 5  bonus: 1 suma: 17
+Gracz 1 liczba kości: 3 wyrzucone: 5 2 5  bonus: 4 suma: 31
+Gracz 2 liczba kości: 3 wyrzucone: 4 1 2  bonus: 0 suma: 24
+Gracz 1 liczba kości: 3 wyrzucone: 2 6 4  bonus: 4 suma: 47
+Gracz 2 liczba kości: 3 wyrzucone: 4 6 3  bonus: 0 suma: 37
+WYGRYWA Gracz 1!
