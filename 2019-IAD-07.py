@@ -11,12 +11,23 @@ def podaj(podpis_zbioru: str) -> list[int]:
 
 
 def wypisz(lista: list[int]) -> list[int]:
-    wynik: list[int] = []
-    i = 0
-    for licznosc in lista: 
-        wynik += [i] * licznosc
-        i += 1
-    return wynik
+    last = -1 
+    for i in range(len(lista) - 1, 0, -1): 
+        if lista[i] != 0: 
+            last = i
+            break
+    print("[", end = "")
+    for i in range(len(lista)): 
+        if i == last:
+            for j in range(lista[i]):
+                if j == lista[i] - 1: 
+                    print(i, end = "")
+                else: 
+                    print(i, end = ", ")
+        else:
+            for j in range(lista[i]): 
+                print(i, end = ", ")
+    print("]")
 
 
 def dodaj(zbior: list[int], element: int) -> list[int]: 
@@ -32,8 +43,6 @@ def dodaj(zbior: list[int], element: int) -> list[int]:
             else:
                 if i == rozmiar:
                     nowy_zbior[i] = 1
-                else:
-                    nowy_zbior[i] = 0
         return nowy_zbior
     
 
@@ -53,26 +62,35 @@ def przeciecie(zbiorA: list[int], zbiorB: list[int]) -> list[int]:
 
 
 def roznica(zbiorA: list[int], zbiorB: list[int]) -> list[int]:
-    zbior_roznicy: list[int] = [0] * len(zbiorA)
-    for i in range(len(zbiorA)): 
-        if i >= len(zbiorB): 
-            zbior_roznicy[i] = zbiorA[i]
+    rozmiar_roznicy: int = -1
+    for i in range(len(zbiorA) - 1, 0, -1):
+        if i >= len(zbiorB):
+            rozmiar_roznicy = i
+            break 
         elif zbiorA[i] > zbiorB[i]: 
+            rozmiar_roznicy = i
+            break
+    if rozmiar_roznicy == -1:
+        return []
+    zbior_roznicy: list[int] = [0] * (rozmiar_roznicy + 1)
+    for i in range(rozmiar_roznicy + 1): 
+        if zbiorA[i] > zbiorB[i]: 
             zbior_roznicy[i] = zbiorA[i] - zbiorB[i]
-        else: 
-            zbior_roznicy[i] = 0
     return zbior_roznicy
     
 
 def main() -> None:
     zbiorA: list[int] = podaj("A")
-    print("Podany zbiór to:\n", wypisz(zbiorA), sep = "")
+    print("Podany zbiór to:", sep = "")
+    wypisz(zbiorA)
     nowy_element: int = int(input("Podaj nowy element zbioru A\n"))
     zbiorA = dodaj(zbiorA, nowy_element)
-    print(wypisz(zbiorA))
+    wypisz(zbiorA)
     zbiorB: list[int] = podaj("B")
-    print("Roznica zbiorow:\n",wypisz(roznica(zbiorA, zbiorB)), sep = "")
-    print("Przeciecie zbiorow:\n",wypisz(przeciecie(zbiorA, zbiorB)), sep = "")
+    print("Roznica zbiorow:", sep = "")
+    wypisz(roznica(zbiorA, zbiorB))
+    print("Przeciecie zbiorow:", sep = "")
+    wypisz(przeciecie(zbiorA, zbiorB))
     # TUTAJ TESTY POSZEGÓLNYCH FUNKCJI 
     # print(przeciecie([0,3,0,4,0,1], [1,2,2,4,1]))
     # print(przeciecie([0,3,0,4], [1,0,2,0]))
