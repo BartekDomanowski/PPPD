@@ -21,14 +21,12 @@ def rysuj(x_train, y_train, label_train, x_test, y_test):
     plt.show()
 
 
-def losuj_lista(n: int, a: int = -1, b: int = 1) -> list[float, float]:
-    lista: list[float, float] = [[0,0]] * n
+def losuj_lista(n: int, a: int = -1, b: int = 1) -> list[float]:
+    lista: list[float] = [[0,0]] * n
     for i in range(n): 
         liczba_1 = random.uniform(a, b)
         liczba_1 = round(liczba_1, 2)
-        liczba_2 = random.uniform(a, b)
-        liczba_2 = round(liczba_2, 2)
-        lista[i] = [liczba_1, liczba_2]
+        lista[i] = liczba_1
     return lista
 
 
@@ -86,9 +84,8 @@ def main() -> None:
     prawy_zakres_losowania: float = float(input("Podaj prawy zakres przedziału, z których mają być losowane punkty: "))
     if int(lewy_zakres_losowania) != lewy_zakres_losowania or int(prawy_zakres_losowania) != prawy_zakres_losowania:
         raise ValueError("Błędny przedział!")
-    lista_treningowa: list[float] = losuj_lista(punkty_treningowe, lewy_zakres_losowania, prawy_zakres_losowania)
-    x_col: list[float] = [ lista_treningowa[i][0] for i in range(len(lista_treningowa)) ]
-    y_col: list[float] = [ lista_treningowa[i][1] for i in range(len(lista_treningowa)) ]
+    x_col: list[float] = losuj_lista(punkty_treningowe, lewy_zakres_losowania, prawy_zakres_losowania)
+    y_col: list[float] = losuj_lista(punkty_treningowe, lewy_zakres_losowania, prawy_zakres_losowania)
     treshold: int = int(input("Podaj wartość threshold: "))
     labels: list[int]  = przypisz_etykiete(x_col, y_col, treshold)
     print("Testowanie algorytmu kNN")
