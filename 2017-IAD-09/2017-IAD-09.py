@@ -128,7 +128,7 @@ def main() -> None:
     A: list[list[float, float]] = read_wine_data("train_wine.csv")
     c: list[int] = read_classes("train_class.txt")
     Z: list[list[float, float]] = read_wine_data("test_wine.csv")
-    new_c = knn(A, c, Z)
+    new_c: list[int] = knn(A, c, Z)
     true_c: list[int] = read_classes("test_class.txt")
     # print(len(new_c), len(true_c)) # works fine
     confusion_matrix(new_c, true_c) 
